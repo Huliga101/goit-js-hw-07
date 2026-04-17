@@ -25,23 +25,17 @@ const images = [
   },
 ];
 
-function createGalleryItems(images) {
-  const galleryItems = images.map(({ url, alt }) => {
-    const galleryItem = document.createElement("li");
-    galleryItem.classList.add("gallery-item");
+document.querySelector(".gallery").append(
+  ...images.map(({ url, alt }) => {
+    const item = document.createElement("li");
+    item.classList.add("gallery-item");
 
-    const galleryImage = document.createElement("img");
-    galleryImage.classList.add("gallery-image");
-    galleryImage.src = url;
-    galleryImage.alt = alt;
+    const image = document.createElement("img");
+    image.classList.add("gallery-image");
+    image.src = url;
+    image.alt = alt;
 
-    galleryItem.append(galleryImage);
-
-    return galleryItem;
-  });
-
-  const galleryList = document.querySelector(".gallery");
-  galleryList.append(...galleryItems);
-}
-
-createGalleryItems(images);
+    item.append(image);
+    return item;
+  })
+);
